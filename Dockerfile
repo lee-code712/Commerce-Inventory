@@ -9,7 +9,7 @@ RUN mkdir -p /app
 
 RUN chown -R wasadm:wasadm /app
 
-RUN git clone https://github.com/lee-code712/agent.java.git /app/agent.java
+RUN git clone https://github.com/lee-code712/agent.git /app/agent
 RUN git clone https://github.com/lee-code712/Commerce-Common.git /app/Commerce-Common
 COPY . /app/Commerce-Inventory
 
@@ -18,4 +18,4 @@ WORKDIR /app/Commerce-Inventory
 RUN cd /app/Commerce-Inventory
 RUN gradle build
 
-CMD ["java", "-Djennifer.config=/app/agent.java/conf/inventory_v2.conf","-javaagent:/app/agent.java/jennifer.jar", "-jar", "/app/Commerce-Inventory/build/libs/Commerce-Inventory-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Djennifer.config=/app/agent/conf/inventory_v2.conf","-javaagent:/app/agent/jennifer.jar", "-jar", "/app/Commerce-Inventory/build/libs/Commerce-Inventory-0.0.1-SNAPSHOT.jar"]
