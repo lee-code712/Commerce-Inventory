@@ -49,7 +49,7 @@ pipeline {
       steps {
         script {
           echo "Deploy App START"
-          sh "${KC} apply -f inventory_deployment.yaml"
+          sh "${KC} apply -f inventory_deployment_v2.yaml"
           sh "${KC} set image deployment/commerce-yr-inventory-v2 commerce-yr-inventory-v2=${IMG}${BUILD_NUMBER} -n commerce-yr"
           echo "Deploy App END"
         }
