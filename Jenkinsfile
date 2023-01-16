@@ -50,7 +50,7 @@ pipeline {
         script {
           echo "Deploy App START"
           sh "${KC} apply -f inventory_deployment.yaml"
-          sh "${KC} set image deployment/commerce-yr-inventory commerce-yr-inventory=${IMG}${BUILD_NUMBER} -n commerce-yr"
+          sh "${KC} set image deployment/commerce-yr-inventory-v2 commerce-yr-inventory-v2=${IMG}${BUILD_NUMBER} -n commerce-yr"
           echo "Deploy App END"
         }
       }
