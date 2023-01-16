@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     acornsoft.io/workload-group-no: "2"
-  generation: 4
+  generation: 1
   name: commerce-yr-inventory
   namespace: commerce-yr
 spec:
