@@ -1,4 +1,4 @@
-def IMG = "192.168.100.12/commerce-yr/commerce-yr-inventory-img"
+def IMG = "192.168.100.12/commerce-yr/commerce-yr-inventory-img:inventory-"
 def KC = "/usr/local/bin/kubectl --kubeconfig=/home/jenkins/acloud-client.conf"
 
 pipeline {
@@ -24,7 +24,7 @@ pipeline {
       steps{
         script {
           echo "Build image START $BUILD_NUMBER"
-          sh "docker build --no-cache -t ${IMG}:inventory-${BUILD_NUMBER} ."
+          sh "docker build --no-cache -t ${IMG}${BUILD_NUMBER} ."
           echo "Build image END"
         }
       }
@@ -38,7 +38,7 @@ pipeline {
         script {
           echo "Push Image START"
           sh "docker login 192.168.100.12 -u admin -p Unipoint11"
-          sh "docker push ${IMG}:inventory-${BUILD_NUMBER}"
+          sh "docker push ${IMG}${BUILD_NUMBER}"
           }
         echo "Push Image END"
       }
@@ -49,8 +49,8 @@ pipeline {
       steps {
         script {
           echo "Deploy App START"
-          sh "${KC} apply -f inventory_deployment_v2.yaml"
-          sh "${KC} set image deployment/commerce-yr-inventory-v2 commerce-yr-inventory=${IMG}:inventory-${BUILD_NUMBER} -n commerce-yr"
+          sh "${KC} apply -f inventory_deployment.yaml"
+          sh "${KC} set image deployment/commerce-yr-inventory commerce-yr-inventory=${IMG}${BUILD_NUMBER} -n commerce-yr"
           echo "Deploy App END"
         }
       }

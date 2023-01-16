@@ -18,4 +18,4 @@ WORKDIR /app/Commerce-Inventory
 RUN cd /app/Commerce-Inventory
 RUN gradle build
 
-CMD ["java", "-Djennifer.config=/app/agent/conf/inventory_v2.conf","-javaagent:/app/agent/jennifer.jar", "-jar", "/app/Commerce-Inventory/build/libs/Commerce-Inventory-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Djennifer.config=/app/agent/conf/inventory.conf","-javaagent:/app/agent/jennifer.jar", "-jar", "/app/Commerce-Inventory/build/libs/Commerce-Inventory-0.0.1-SNAPSHOT.jar"]
